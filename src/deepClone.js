@@ -5,17 +5,16 @@ function deepClone(value, hash = new WeakMap()) {
 
   if (value instanceof Date) return new Date(value);
 
-  if (typeof value !== "object") return value;
+  if (typeof value != "object") return value;
+  let obj = new value.constructor(); // [] {}
 
-  if (hash.get(obj)) return hash.get(obj);
-  const value = obj.constructor();
-  hash.set(obj.value);
+  if (hash.get(value)) return hash.get(value);
+  hash.set(value, obj);
 
   for (let key in value) {
     if (value.hasOwnProperty(key)) {
-      ojb[key] = deepClone(value[key], hash);
+      obj[key] = deepClone(value[key], hash);
     }
   }
-
-  return ojb;
+  return obj;
 }
