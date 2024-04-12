@@ -7,6 +7,6 @@ Function.prototype._bind = function (context = window, ...arg) {
       arg.concat(innerArg)
     );
   };
-  fBound.prototype = Object.create(this.prototype);
+  bindFn.prototype = Object.create(this.prototype);
   return bindFn;
 };
