@@ -1,5 +1,5 @@
 function limit(limit, request) {
-  const signal = limit;
+  let signal = limit;
   const task = [];
 
   async function run() {
